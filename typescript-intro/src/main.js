@@ -1,16 +1,15 @@
-"use strict";
 function greetUser(name, role) {
-    return `Sorry ${name}, you're not an admin!`;
+    return "Sorry ".concat(name, ", you're not an admin!");
 }
-const ay = greetUser("Emmanuel Adeoye", "user");
+var ay = greetUser("Emmanuel Adeoye", "user");
 var subscriptions;
 (function (subscriptions) {
     subscriptions["free"] = "FREE";
     subscriptions["premium"] = "PREMIUM";
     subscriptions["enterprise"] = "ENTERPRISE";
 })(subscriptions || (subscriptions = {}));
-let subscription = subscriptions.free;
+var subscription = subscriptions.free;
 console.log(ay, '\n', 'You are subscribed to the', subscription, 'plan');
-let user;
+var user;
 user = (["Ade Ife", 23]);
-// console.log(user);
+console.log(user);
