@@ -100,14 +100,87 @@ const myCar = new Car("Tesla", 120);
 myCar.drive();
 
 const myBike = new Bike("TVS", 80);
-console.log(myBike.ride());
+// console.log(myBike.ride());
 
 function getLastElement<T>(arr: T[]): T | undefined {
   return arr.length > 0 ? arr[arr.length - 1] : undefined;
 }
 
 // Example usage:
-console.log(getLastElement<number>([10, 20, 30]));    // Output: 30
-console.log(getLastElement<string>(["apple", "banana", "cherry"])); // Output: "cherry"
-console.log(getLastElement<boolean>([true, false, true])); // Output: true
-console.log(getLastElement<number>([])); // Output: undefined
+// console.log(getLastElement<number>([10, 20, 30]));    // Output: 30
+// console.log(getLastElement<string>(["apple", "banana", "cherry"])); // Output: "cherry"
+// console.log(getLastElement<boolean>([true, false, true])); // Output: true
+// console.log(getLastElement<number>([])); // Output: undefined
+
+
+class Dog {
+  bark() {
+      return "Woof!";
+  }
+}
+
+class Cat {
+  meow() {
+      return "Meow!";
+  }
+}
+
+function makesound (animal: Dog | Cat) {
+  if (animal instanceof Dog) {
+    return animal.bark()
+  } else {
+    return animal.meow()
+  }
+}
+
+
+// console.log(makesound(new Dog())); // Output: "Woof!"
+// console.log(makesound(new Cat())); // Output: "Meow!"
+
+interface User {
+  name: string;
+  age: number;
+  email: string;
+}
+
+const updateUser = (user: Partial<User>) => {
+  console.log("Updated user:", user.name);
+};
+
+// updateUser({ name: "Alice" }); // ✅ Only name is updated
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  isAdmin: boolean;
+}
+
+// type BasicUser = Pick<User, "name" | "email">;
+
+const user1: Pick<User, "name" | "email"> = { name: "John", email: "kiki@jova.com" };
+
+// console.log(user1.name, user1.email)
+
+type User2 = {
+  name: string;
+  age: number;
+};
+
+// Make all properties optional
+// type OptionalUser = { [K in keyof User2]?: User2[K] };
+
+const user2: Partial<User2> = { name: "Jane" }; // ✅ No age required
+// console.log(user2.name)
+
+type Admin = { permissions: string[] };
+type User3 = { name: string };
+
+// type AdminUser = Admin & User3;
+
+const admin: Admin & User3 = {
+    name: "SuperAdmin",
+    permissions: ["read", "write", "delete"]
+    
+};
+// console.log(admin.name, admin.permissions)
